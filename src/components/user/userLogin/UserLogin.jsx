@@ -1,21 +1,27 @@
 import React, {useState} from "react";
-import { Login } from "../../Auth/Auth";
+import {supabase} from '../../../supabaseClient'
 // import "./AdminStyle.scss";
 export const UserLogin = () => { // eslint-disable-next-line
     const [email, setEmail] = useState("");
     // eslint-disable-next-line
     const [password, setPassword] = useState("");
-    const clicked = ()=>{
-      <Login email={email}  password={password}/>
+    const clicked = async()=>{
+        
+            // eslint-disable-next-line
+           const { user,  error } = await supabase.auth.signIn({
+               email: email,
+               password: password,
+             })
+       
 
     }
     return (
         <div className="admin">
             <div className="form">
                 <div className="Heading">
-                    <h1>Create new account
+                    <h1>Login Here
                     </h1>
-                    <p>Signup</p>
+                    <a href="/user/signup">Create new account ?</a>
                 </div>
                 <div className="inputs">
                     <input className="input" type="email" placeholder="Email...."

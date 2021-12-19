@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { supabase } from '../../../supabaseClient';
 export const AdminSignup = () => {
    // eslint-disable-next-line
-    // const [username, setUsername] = useState("");   
+    const [username, setUsername] = useState("");   
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");    
     const clicked = async()=>{
@@ -11,6 +11,13 @@ export const AdminSignup = () => {
         email: email,
         password: password,
       })
+      // const {data} =await supabase 
+      // .from('profiles')
+      // .eq('id',user?.id)
+      // .single();
+      // if(data){
+      //   setUsername(data.username)
+      // }
 
     
     }    
@@ -23,12 +30,12 @@ export const AdminSignup = () => {
           <a href="/admin/login">Already Have an Account ?</a>
         </div>
         <div className="inputs">
-            {/* <input
+            <input
           className="input"
             type="username"
             placeholder="Username...."
             onChange={(e) => setUsername(e.target.value)}
-          /> */}
+          />
           <input
           className="input"
             type="email"
